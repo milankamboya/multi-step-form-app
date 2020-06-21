@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import UserDetailsForm from './UserDetailsForm';
+import PersonalDetailsForm from './PersonalDetailsForm';
+import ConfirmForm from './ConfirmForm';
+import SuccessForm from './SuccessForm';
 
 export default class MainUserForm extends Component {
 
@@ -12,7 +16,7 @@ export default class MainUserForm extends Component {
     bio: ''
   }
 
-  nestStep = () => {
+  nextStep = () => {
     this.setState(prevState => {
       return {
         ...prevState,
@@ -30,30 +34,36 @@ export default class MainUserForm extends Component {
     })
   };
 
-  handleChange = input => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        [input]: e.target.value
-      }
-    })
+  handleChange = input => e => {
+    // this.setState(prevState => {
+    //   return {
+    //     ...prevState,
+    //     [input]: e.target.value
+    //   }
+    // })
+    this.setState({ [input]: e.target.value });
   };
 
 
   render() {
     let { step } = this.state;
+    const { firstName, lastName, email, occupation, city, bio } = this.state;
+    const values = { firstName, lastName, email, occupation, city, bio };
 
     switch (step) {
       case 1:
-        return (
-          <div>
-            sdfsadfasd
-          </div>
-        );
+        return <UserDetailsForm
+          nextStep={this.nextStep}
+          handleChange={this.handleChange}
+          values={values}
+        />;
       case 2:
-        return (
-          <div>test</div>
-        );
+        return <PersonalDetailsForm />;
+      case 3:
+        return <ConfirmForm />;
+      case 4:
+        return <SuccessForm />;
+
       default: return;
     }
   }
