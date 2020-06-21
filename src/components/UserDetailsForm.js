@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Dialog from 'material-ui/core/Dialog';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';

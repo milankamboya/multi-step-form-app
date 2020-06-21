@@ -47,8 +47,8 @@ export default class MainUserForm extends Component {
 
   render() {
     let { step } = this.state;
-    const { firstName, lastName, email, occupation, city, bio } = this.state;
-    const values = { firstName, lastName, email, occupation, city, bio };
+    const { firstName, lastName, email, profession, city, bio } = this.state;
+    const values = { firstName, lastName, email, profession, city, bio };
 
     switch (step) {
       case 1:
@@ -58,9 +58,18 @@ export default class MainUserForm extends Component {
           values={values}
         />;
       case 2:
-        return <PersonalDetailsForm />;
+        return <PersonalDetailsForm
+          nextStep={this.nextStep}
+          prevStep={this.prevStep}
+          handleChange={this.handleChange}
+          values={values}
+        />;
       case 3:
-        return <ConfirmForm />;
+        return <ConfirmForm nextStep={this.nextStep}
+          prevStep={this.prevStep}
+          handleChange={this.handleChange}
+          values={values}
+        />;
       case 4:
         return <SuccessForm />;
 
