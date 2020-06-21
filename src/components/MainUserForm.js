@@ -65,9 +65,9 @@ export default class MainUserForm extends Component {
           values={values}
         />;
       case 3:
-        return <ConfirmForm nextStep={this.nextStep}
+        return <ConfirmForm
+          nextStep={this.nextStep}
           prevStep={this.prevStep}
-          handleChange={this.handleChange}
           values={values}
         />;
       case 4:
